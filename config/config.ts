@@ -6,4 +6,9 @@ export default defineConfig({
   npmClient: "yarn",
   plugins: ["@umijs/plugins/dist/antd"],
   antd: {},
+  lessLoader: {
+    modifyVars: {
+      hack: `true; @import "~@/mixin.less";`,
+    },
+  },
 });
