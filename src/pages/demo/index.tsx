@@ -12,7 +12,14 @@ const Demo: React.FC = () => {
   };
   const signUpHandle = async () => {
     const values = await form.validateFields();
+    const { username, password } = values;
     console.log(values);
+    axios
+      .post("http://localhost:3008/api/signup", {
+        name: username,
+        address: password,
+      })
+      .then((res: any) => console.log(res));
   };
 
   return (
