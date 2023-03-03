@@ -1,10 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const userRouter = require("./router/user");
+const bodyParser = require("body-parser");
 
 // 创建express的服务器实例
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // 在路由之前封装统一的错误处理函数
 app.use((req, res, next) => {

@@ -1,9 +1,9 @@
 export default {
   proxy: {
-    "/api": {
-      target: "http://jsonplaceholder.typicode.com/",
+    "/demo/": {
+      target: "http://localhost:3008",
       changeOrigin: true,
-      pathRewrite: { "^/api": "" },
+      pathRewrite: { "^/demo": "/demo" },
     },
   },
 };
