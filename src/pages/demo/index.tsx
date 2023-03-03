@@ -1,10 +1,13 @@
 import { Button, Form, Input } from "antd";
-import React from "react";
+import React, { useReducer } from "react";
 import axios from "axios";
 import styles from "./index.less";
+import { initialState, reducer } from "./model";
+import { signup } from ''
 
 const Demo: React.FC = () => {
   const [form] = Form.useForm();
+  const [state, dispatch] = useReducer(reducer, initialState as any);
 
   const signInHandle = async () => {
     const values = await form.validateFields();
