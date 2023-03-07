@@ -1,29 +1,34 @@
-import ReactDOM from "react-dom";
+// import { createRoot } from "react-dom/client";
 
-import PageLoading from "@/components/PageLoading";
+// import PageLoading from "@/components/PageLoading";
 
-const collectors = new Map<string, string>();
+// const collectors = new Map<string, string>();
 
-const showLoading = (url: string) => {
-  if (collectors.size === 0) {
-    ReactDOM.render(<PageLoading />, document.getElementById("page-loading"));
-  }
-  collectors.set(url, url);
-};
+// const PageLoadingContainer = document.createElement("div");
+// PageLoadingContainer.id = "page-loading";
+// document.body.append(PageLoadingContainer);
 
-const clearLoading = (url: string) => {
-  if (url && collectors.has(url)) {
-    collectors.delete(url);
-  }
+// const container = document?.getElementById("page-loading") as HTMLElement;
+// const root = createRoot(container);
 
-  if (collectors.size === 0) {
-    ReactDOM.unmountComponentAtNode(
-      document.getElementById("page-loading") as HTMLDivElement
-    );
-  }
-};
+// const showLoading = (url: string) => {
+//   if (collectors.size === 0) {
+//     root.render(<PageLoading />);
+//   }
+//   collectors.set(url, url);
+// };
 
-window.showLoading = showLoading;
-window.clearLoading = clearLoading;
+// const clearLoading = (url: string) => {
+//   if (url && collectors.has(url)) {
+//     collectors.delete(url);
+//   }
 
-export { showLoading, clearLoading };
+//   if (collectors.size === 0) {
+//     root.unmount();
+//   }
+// };
+
+// window.showLoading = showLoading;
+// window.clearLoading = clearLoading;
+
+// export { showLoading, clearLoading };

@@ -15,8 +15,8 @@ app.use((req, res, next) => {
   // err可能是一个错误构造函数的实例对象， 也可能是一个字符串
   res.errHandle = function (err, status = 1) {
     res.send({
-      status,
-      message: err instanceof Error ? err.message : err,
+      code: status,
+      msg: err instanceof Error ? err.message : err,
     });
   };
   next();

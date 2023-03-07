@@ -1,4 +1,4 @@
-import { $axios } from "@/utils/http";
+import { $axios } from "@/utils/axios";
 import { API } from "./api";
 
 // 注册

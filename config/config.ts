@@ -1,5 +1,6 @@
 import { defineConfig } from "umi";
 import { routes } from "./router";
+import { proxy } from "./proxy";
 
 const API_PREFIX = "/demo";
 
@@ -12,14 +13,13 @@ export default defineConfig({
   hash: true,
   ignoreMomentLocale: true,
   inlineLimit: 4000,
-  cssLoader: {
-    localsConvention: "camelCase",
-  },
+  cssLoader: {},
   lessLoader: {
     modifyVars: {
       hack: `true; @import "~@/mixin.less";`,
     },
   },
+  proxy: proxy["dev"],
   define: {
     "process.env.API_PREFIX": API_PREFIX,
   },

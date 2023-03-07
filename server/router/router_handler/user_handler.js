@@ -12,7 +12,7 @@ exports.regUser = (req, res) => {
     if (err) return res.errHandle(err, 2);
 
     if (results.length > 0) {
-      return res.errHandle("用户名已被占用， 请更换其他用户名", 3);
+      return res.errHandle("用户名已被占用， 请更换其他用户名", 500);
     }
     // 对密码进行加密
     // userinfo.password = bcrypt.hashSync(userinfo.password, 10); // 暂时放开 有助于调试
@@ -28,9 +28,9 @@ exports.regUser = (req, res) => {
         }
         // 判断影响行数是否为1
         if (results.affectedRows !== 1)
-          return res.errHandle("注册用户失败， 请稍后再试", 4);
+          return res.errHandle("注册用户失败， 请稍后再试", 500);
         // success
-        res.errHandle("注册成功", 0);
+        res.errHandle("注册成功", 200);
       }
     );
   });

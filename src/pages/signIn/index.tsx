@@ -3,7 +3,7 @@ import React, { useReducer } from "react";
 import axios from "axios";
 import styles from "./index.less";
 import { initialState, reducer } from "./model";
-import { signup } from ''
+import { signupHandle } from "./model";
 
 const Demo: React.FC = () => {
   const [form] = Form.useForm();
@@ -17,12 +17,7 @@ const Demo: React.FC = () => {
     const values = await form.validateFields();
     const { username, password } = values;
     console.log(values);
-    axios
-      .post("http://localhost:3008/api/signup", {
-        name: username,
-        address: password,
-      })
-      .then((res: any) => console.log(res));
+    signupHandle(values);
   };
 
   return (

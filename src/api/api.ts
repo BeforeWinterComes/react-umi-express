@@ -1,3 +1,3 @@
 export enum API {
-  SIGN_UP = "/signup",
+  SIGN_UP = "/api/signup",
 }

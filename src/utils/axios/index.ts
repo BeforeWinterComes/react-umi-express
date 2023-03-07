@@ -7,7 +7,6 @@ import { message } from "antd";
 import { cloneDeep } from "lodash-es";
 import { getUserInfo, transformFormData } from "../utils";
 import qs from "qs";
-import { showLoading, clearLoading } from "./renderLoading";
 import { history } from "umi";
 
 const errorResult: string = "__ERROR_RESULT__";
@@ -28,7 +27,7 @@ export class Axios {
   }
 
   static transformResponse(res: ResponseResult, conf: CreateAxiosConfig): any {
-    const { data, msg, code } = res;
+    const { msg, code } = res;
     if (code === 401) {
       Promise.reject(defaultConfig[401]);
       message.error(defaultConfig[401]);
@@ -41,7 +40,7 @@ export class Axios {
     }
 
     // 平台接口返回格式没有包裹一层data(此处可以根据不同组的代码逻辑统一返回数据类型)
-    return conf.isPlatform ? res : data;
+    return res;
   }
 
   static transformRequest(config: CreateAxiosConfig): CreateAxiosConfig {
@@ -59,7 +58,7 @@ export class Axios {
       conf.params = null;
     }
 
-    !conf.disableLoading && showLoading(conf.url as string);
+    // !conf.disableLoading && showLoading(conf.url as string);
     return conf;
   }
 
@@ -69,7 +68,7 @@ export class Axios {
       this.instance
         .request(conf)
         .then((res: AxiosResponse<ResponseResult>) => {
-          !conf.disableLoading && clearLoading(conf.url as string);
+          // !conf.disableLoading && clearLoading(conf.url as string);
           const { data, headers } = res;
           const ret: any = Axios.transformResponse(data, conf);
           if (ret === errorResult401) {
@@ -89,7 +88,7 @@ export class Axios {
           }
         })
         .catch((e: Error) => {
-          !conf.disableLoading && clearLoading(conf.url as string);
+          // !conf.disableLoading && clearLoading(conf.url as string);
           message.error(`系统开小差了(${e.message})，请刷新后重试或联系管理员`);
           // reject(e);
         });

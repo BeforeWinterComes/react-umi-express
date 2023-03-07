@@ -7,13 +7,13 @@ import styles from "./index.less";
 const Home: React.FC = () => {
   // 跳转demo页
   const handleToDemo = () => {
-    router.push("/demo");
+    router.push("/login");
   };
 
   return (
     <div style={{ width: "100%" }} className={styles.container}>
       <Button type="primary" onClick={handleToDemo}>
-        Demo页
+        开始
       </Button>
     </div>
   );

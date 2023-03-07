@@ -1,9 +1,9 @@
-export default {
-  proxy: {
-    "/demo/": {
-      target: "http://localhost:3008",
+export const proxy: Record<string, any> = {
+  dev: {
+    "/demo": {
+      target: "http://localhost:3008/",
       changeOrigin: true,
-      pathRewrite: { "^/demo": "/demo" },
+      pathRewrite: { "^/demo": "" },
     },
   },
 };

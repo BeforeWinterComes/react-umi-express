@@ -1,4 +1,4 @@
 export const routes = [
   { path: "/", component: "index" },
-  { path: "/demo", component: "demo" },
+  { path: "/login", component: "signIn" },
 ];
