@@ -18,9 +18,12 @@ const password = joi
   .pattern(/^[\S]{6,20}$/)
   .required();
 
+const phone = joi.string();
+
 exports.reg_login_schema = {
   body: {
     username,
     password,
+    phone,
   },
 };

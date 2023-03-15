@@ -9,3 +9,12 @@ export async function signup(params?: RequestParams) {
     params,
   });
 }
+
+// 登录
+export async function login(params?: RequestParams) {
+  return $axios.request({
+    url: API.SIGN_IN,
+    method: "POST",
+    params,
+  });
+}

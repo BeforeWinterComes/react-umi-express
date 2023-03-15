@@ -14,5 +14,7 @@ router.get("/", (req, res) => {
 
 // 注册接口
 router.post("/signup", expressJoi(reg_login_schema), userHandle.regUser);
+//登录接口
+router.post("/login", userHandle.login);
 
 module.exports = router;

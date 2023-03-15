@@ -39,7 +39,6 @@ export class Axios {
       return errorResult;
     }
 
-    // 平台接口返回格式没有包裹一层data(此处可以根据不同组的代码逻辑统一返回数据类型)
     return res;
   }
 
@@ -47,6 +46,10 @@ export class Axios {
     const conf: CreateAxiosConfig = cloneDeep(config);
     const userInfo = getUserInfo() || {};
     conf.params = { ...userInfo, ...(conf.params || {}) };
+    conf.headers = {
+      ...conf.headers,
+      Authorization: localStorage.getItem("Authorization"),
+    };
 
     if (conf.method?.toLocaleUpperCase() === "POST") {
       if (conf.isFormData) {

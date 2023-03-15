@@ -1,4 +1,4 @@
-import { signup } from "@/api/user";
+import { signup, login } from "@/api/user";
 import { useReducer } from "react";
 
 export const initialState = {};
@@ -16,7 +16,13 @@ export const reducer = (state: any, action: any) => {
 // 注册
 const signupHandle = async (params: RequestParams) => {
   const res = await signup(params);
-  console.log(res);
+  return res;
 };
 
-export { signupHandle };
+// 登录
+const loginHandle = async (params: RequestParams) => {
+  const res = await login(params);
+  return res;
+};
+
+export { signupHandle, loginHandle };

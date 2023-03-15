@@ -2,12 +2,22 @@ const express = require("express");
 const cors = require("cors");
 const userRouter = require("./router/user");
 const bodyParser = require("body-parser");
+const { expressjwt } = require("express-jwt");
+const secretKey = "itheima No1 ^_^";
 
 // 创建express的服务器实例
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// 注册将jwt字符串解析还原成 json对象的中间件
+// 只要配置了这个中间件  就可以吧解析出来的用户信息，放到req.user里
+app.use(
+  expressjwt({ secret: secretKey, algorithms: ["HS256"] }).unless({
+    path: [/^\/api\//],
+  })
+);
 
 // 在路由之前封装统一的错误处理函数
 app.use((req, res, next) => {
