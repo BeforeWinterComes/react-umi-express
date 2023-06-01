@@ -1,10 +1,13 @@
 import { Button, Form, Input, message, Modal } from "antd";
-import React, { useReducer, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import styles from "./index.less";
 import { initialState, reducer } from "./model";
 import { signupHandle, loginHandle } from "./model";
 
-const SignIn: React.FC = () => {
+interface IProps {
+  callback?: (res: any) => void;
+}
+const SignIn: React.FC<IProps> = ({ callback }) => {
   const [form] = Form.useForm();
   const [signUpForm] = Form.useForm();
   const [visible, setVisible] = useState<boolean>(false);
@@ -12,6 +15,7 @@ const SignIn: React.FC = () => {
 
   const signInHandle = async () => {
     const values = await form.validateFields();
+    console.log(values);
     loginHandle(values).then((res) => {
       message.success(res?.msg);
       localStorage.setItem("Authorization", res?.token);
@@ -28,37 +32,42 @@ const SignIn: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Form
-        name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
-        initialValues={{ remember: true }}
-        autoComplete="off"
-        form={form}
-      >
-        <Form.Item
-          label="用户名"
-          name="username"
-          rules={[{ required: true, message: "请输入用户名" }]}
-        >
-          <Input />
-        </Form.Item>
+      <div className={styles.left}></div>
+      <aside className={styles.right}>
+        <div className={styles.form_wrap}>
+          <Form
+            name="basic"
+            labelCol={{ span: 8 }}
+            wrapperCol={{ span: 16 }}
+            style={{ maxWidth: 600 }}
+            initialValues={{ remember: true }}
+            autoComplete="off"
+            form={form}
+          >
+            <Form.Item
+              label="用户名"
+              name={["username", "hahaha"]}
+              rules={[{ required: true, message: "请输入用户名" }]}
+            >
+              <Input />
+            </Form.Item>
 
-        <Form.Item
-          label="密码"
-          name="password"
-          rules={[{ required: true, message: "请输入密码" }]}
-        >
-          <Input.Password />
-        </Form.Item>
-      </Form>
-      <div className={styles.operate}>
-        <Button onClick={signInHandle} type="primary">
-          登录
-        </Button>
-        <Button onClick={() => setVisible(true)}>注册</Button>
-      </div>
+            <Form.Item
+              label="密码"
+              name="password"
+              rules={[{ required: true, message: "请输入密码" }]}
+            >
+              <Input.Password />
+            </Form.Item>
+          </Form>
+          <div className={styles.operate}>
+            <Button onClick={signInHandle} type="primary">
+              登录
+            </Button>
+            <Button onClick={() => setVisible(true)}>注册</Button>
+          </div>
+        </div>
+      </aside>
       <Modal
         title="注册"
         destroyOnClose

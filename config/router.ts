@@ -1,4 +1,7 @@
 export const routes = [
-  { path: "/", component: "index" },
+  {
+    path: "/",
+    component: "index",
+  },
   { path: "/login", component: "signIn" },
 ];
