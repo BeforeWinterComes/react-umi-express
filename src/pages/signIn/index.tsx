@@ -3,6 +3,7 @@ import React, { useEffect, useReducer, useState } from "react";
 import styles from "./index.less";
 import { initialState, reducer } from "./model";
 import { signupHandle, loginHandle } from "./model";
+import Waves from "@/components/Waves";
 
 interface IProps {
   callback?: (res: any) => void;
@@ -21,6 +22,7 @@ const SignIn: React.FC<IProps> = ({ callback }) => {
       localStorage.setItem("Authorization", res?.token);
     });
   };
+
   const signUpHandle = async () => {
     const values = await signUpForm.validateFields();
     signupHandle(values).then((res) => {
@@ -32,6 +34,9 @@ const SignIn: React.FC<IProps> = ({ callback }) => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.waves_wrap}>
+        <Waves />
+      </div>
       <div className={styles.left}></div>
       <aside className={styles.right}>
         <div className={styles.form_wrap}>
@@ -68,6 +73,7 @@ const SignIn: React.FC<IProps> = ({ callback }) => {
           </div>
         </div>
       </aside>
+      <footer>By Zhangjd | mr.chrish</footer>
       <Modal
         title="注册"
         destroyOnClose

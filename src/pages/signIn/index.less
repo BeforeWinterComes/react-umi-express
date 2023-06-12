@@ -1,8 +1,9 @@
 .container {
   width: 100%;
   height: 100%;
+  position: relative;
   .flex(row, space-between, flex-start);
-  background-color: skyblue;
+  background: linear-gradient(60deg, rgba(84,58,183,1) 0%, rgba(0,172,193,1) 100%);;
   :global {
     :where(.css-dev-only-do-not-override-j0nf2s).ant-form-item .ant-form-item-label >label {
       color: #fff;
@@ -22,5 +23,20 @@
         .flex(row, space-around, center);
       }
     }
+  }
+  .waves_wrap {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    z-index: 0;
+  }
+  footer {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    z-index: 1;
+    text-align: center;
+    color: #333;
+    font-size: 14px;
   }
 }
