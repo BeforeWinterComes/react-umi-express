@@ -1,6 +1,5 @@
 {
-  "private": true,
-  "author": "张经典 <zhangjdd@seentao.com>",
+  "author": "chrish <mrchrish@163.com>",
   "scripts": {
     "dev": "umi dev",
     "build": "umi build",
