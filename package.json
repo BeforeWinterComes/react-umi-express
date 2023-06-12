@@ -1,4 +1,8 @@
 {
+  "name": "react-umi-express",
+  "version": "1.0.0",
+  "private": false,
+  "description": "本项目采用 react+umi+express 搭建前后端一体式框架，并实现登陆注册接口，持续新增中...",
   "author": "chrish <mrchrish@163.com>",
   "scripts": {
     "dev": "umi dev",
